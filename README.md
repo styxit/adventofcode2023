@@ -30,3 +30,29 @@ Solve the puzzle using example data.
 ```
  ./aoc solve 28 --example
 ```
+
+## 🐞 Testing
+For each solution a test can be written to make sure the output is correct. By extending the `AbstractDayTester` only the (example) solutions need to be defined. To test the solution for a new day, add a test in the `tests/Solutions` dir, call it `Day28Test.php`.
+
+```
+<?php
+
+namespace Tests\Solutions;
+
+/**
+ * @internal
+ */
+class Day28Test extends AbstractDayTester
+{
+    protected $solutionPart1 = 123;
+    protected $solutionPart2 = 0; // Part 2 not yet solved.
+
+    protected $exampleSolution1 = 456;
+    protected $exampleSolution2 = 0; // Part 2 not yet solved.
+}
+```
+
+Run all tests: 
+```
+./vendor/bin/phpunit --testdox tests
+```
