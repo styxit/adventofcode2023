@@ -28,7 +28,7 @@ class InputLoader
         $path = self::getFilePath($day, $fileName);
 
         if (!file_exists($path) && $nr) {
-            return self::example($day);
+            return self::loadInput($day, $fileNameBase);
         } elseif (!file_exists($path)) {
             throw new FileNotFoundException('Input file does not exists.');
         }
