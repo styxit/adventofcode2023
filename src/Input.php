@@ -19,7 +19,8 @@ class Input
     /**
      * Loader constructor.
      *
-     * @param string $input The full path to the input file to load.
+     * @param string $input       The full path to the input file to load.
+     * @param mixed  $inputString
      */
     public function __construct($inputString)
     {

@@ -2,14 +2,9 @@
 
 namespace Styxit;
 
-use Styxit\Input;
-use Styxit\PuzzleSolutionInterface;
-
 class Puzzle
 {
-    public function __construct(private PuzzleSolutionInterface $solution)
-    {
-    }
+    public function __construct(private PuzzleSolutionInterface $solution) {}
 
     public function solve(PuzzlePart $part, Input $input)
     {
