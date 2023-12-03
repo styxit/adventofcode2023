@@ -14,8 +14,8 @@ enum Numbers: int
     case eight = 8;
     case nine = 9;
 
-    public static function fromString(string $name){
-        
-        return constant("self::$name");
+    public static function fromString(string $name)
+    {
+        return constant("self::{$name}");
     }
 }
