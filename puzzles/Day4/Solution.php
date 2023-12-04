@@ -13,9 +13,10 @@ class Solution implements PuzzleSolutionInterface
      */
     public function solution1(Input $input)
     {
-        $cards = $input->collection()->map(function ($line): Card {
-            return $this->cardFromString($line);
-        });
+        $cards = $input->collection()
+            ->map(function ($line): Card {
+                return $this->cardFromString($line);
+            });
 
         return $cards->map->points()->sum();
     }
@@ -25,7 +26,23 @@ class Solution implements PuzzleSolutionInterface
      */
     public function solution2(Input $input)
     {
-        return 0;
+        $cards = $input->collection()
+            ->map(function ($line): Card {
+                return $this->cardFromString($line);
+            })
+            ->keyBy('id');
+
+        $cards->each(function (Card $card) use ($cards) {
+            // Loop the prizes for this card, update the instances for  the cards that were won.
+            foreach ($card->prize() as $wonCardNumber => $wonInstances) {
+                // Get the instances of the newly won card by reference.
+                $wonCardInstances = &$cards->get($wonCardNumber)->instances;
+                // Increase the card instances by reference.
+                $wonCardInstances = $wonCardInstances + $wonInstances;
+            }
+        });
+
+        return $cards->map->instances->sum();
     }
 
     /**
