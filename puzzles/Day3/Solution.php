@@ -17,7 +17,7 @@ class Solution implements PuzzleSolutionInterface
         $grid = Grid::fromLines($input->lines());
 
         $filteredParts = $parts
-            // Only leep the Parts that have one or more surrounding Characters.
+            // Only keep the Parts that have one or more surrounding Characters.
             ->filter(function (Part $part) use ($grid) {
                 return $grid
                     ->getSurrounding($part)
