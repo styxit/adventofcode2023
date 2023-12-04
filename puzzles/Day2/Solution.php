@@ -20,10 +20,12 @@ class Solution implements PuzzleSolutionInterface
         $games = $input->collection()
             ->map($this->stringToGame(...))
             ->filter(function (Game $game) {
+                // Find the first set of cubes that exceeds the cube limit.
                 $exceeds = $game->reveals->first(function ($cubes) {
                     return $cubes->red > self::RED || $cubes->blue > self::BLUE || $cubes->green > self::GREEN;
                 });
 
+                // If the cube limit was not exceeded keep this game.
                 return is_null($exceeds);
             });
 
