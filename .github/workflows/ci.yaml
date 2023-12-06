@@ -7,6 +7,10 @@ jobs:
   php-cs-fixer:
     runs-on: ubuntu-latest
 
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push changes.
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
