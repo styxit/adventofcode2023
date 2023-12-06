@@ -37,10 +37,10 @@ class Solution implements PuzzleSolutionInterface
     {
         $winCount = 0;
 
-        // Skip the first microseconds that will definately not finish to reduce the number of needed calculations.
-        $startMs = (int) floor($recordDistance / $time + 1);
+        // Skip the first microseconds from start and end that will definately not finish.
+        $skipMs = (int) floor($recordDistance / $time);
 
-        for ($ms = $startMs; $ms < $time; ++$ms) {
+        for ($ms = $skipMs; $ms < $time-$skipMs; ++$ms) {
             $speed = $ms;
             $duration = $time - $ms;
             $distance = $speed * $duration;
